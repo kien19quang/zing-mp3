@@ -1,0 +1,85 @@
+.wrapper{
+    height: 70px;
+    min-width: 660px;
+    max-width: 1126px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 240px;
+    top: 0;
+    right: 0;
+    padding: 0 var(--padding-section);
+    z-index: 99;
+    transition: right .4s;
+}
+
+.inner{
+    width: 100%;
+    height: var(--header-height);
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.header-left{
+    margin-right: 10px;
+    height: inherit;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-btn{
+    font-size: 2.5rem;
+    padding-right: 20px;
+}
+
+.disabled {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: .3;
+    cursor: none;
+}
+
+//header-right
+.header-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.download-desktop-app{
+    color: var(--link-text-hover);
+    margin-right: 12px;
+    background-color: var(--alpha-bg);
+    border-radius: 999px;
+}
+.download-btn{
+    display: flex;
+    padding: 10px 24px;
+    align-items: center;
+    font-weight: 600;
+}
+.icon-download{
+    margin-right: 4px;
+}
+.setting-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--alpha-bg);
+    border-radius: 999px;
+}
+.user-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+}

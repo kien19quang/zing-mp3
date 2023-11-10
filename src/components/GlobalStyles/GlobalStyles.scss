@@ -1,11 +1,30 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
-  --primary: #fe2c55;
+  --black: #0a0d14;
+  --link-text-hover: #c273ed;
+  --text-primary: #fff;
+  --primary-bg: #34224f;
+  --alpha-bg: hsla(0, 0%, 100%, 0.1);
+  --layout-bg: #170f23;
+  --padding-section: 59px;
+  --text-placeholder: #dadada;
+  --search-text: #eee;
+  --font-family: 'Inter', sans-serif;
+
+
+  --sidebar-bg: hsla(0, 0%, 100%, 0.05);
+  --sidebar-width: 240px;
+
+  --header-height: 40px;
+  --search-width: 440px;
 }
 
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -14,8 +33,29 @@ html {
 }
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 1.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
   line-height: 1.5;
+  font-weight: 400;
   text-rendering: optimizeSpeed;
+  color: var(--text-primary);
+  background-color: var(--layout-bg);
+  font-weight: 400;
+  overflow-y: overlay;
+}
+
+button,
+input{
+  outline: none;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  word-break: normal;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
 }

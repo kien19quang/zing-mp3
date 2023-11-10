@@ -1,15 +1,12 @@
-import { HeaderOnly } from '~/components/Layout';
+import { NoSidebarLayout, FullLayout } from '~/layouts';
 
-import Home from '~/pages/Home'
-import Following from '~/pages/Following';
-import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
+import { Home, Profile } from '~/pages'
 
 const publicRoutes = [
-    { path: '/', component: Home },
-    { path: '/following', component: Following },
-    { path: '/profile', component: Profile },
-    { path: '/upload', component: Upload, layout: HeaderOnly }
+    { path: '/', component: Home, layout: FullLayout },
+    { path: '/profile', component: Profile, layout: NoSidebarLayout },
+    { path: '/upload', component: Upload }
 ]
 
 const privateRoutes = [
