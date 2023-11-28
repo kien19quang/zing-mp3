@@ -1,0 +1,48 @@
+.newReleaseSection{
+    position: relative;
+    margin-bottom: -10px;
+}
+
+.pad0{
+    padding: 0 !important; 
+}
+
+.channelSection{
+    margin-top: 48px;
+}
+
+.discovery-btn{
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.genre-select {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.columns {
+    height: 321px;
+    min-height: 200px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    margin-right: -4px;
+}

@@ -15,7 +15,7 @@ const list = [
         title: "cô đơn đã quá bình thường",
     },
 ]
-function ListSuggest() {
+function ListSuggest({ result }) {
     return (
         <div className={cx('suggest-list')}>
             <h4 className={cx('suggest-title')}>
@@ -23,6 +23,7 @@ function ListSuggest() {
             </h4>
             {
                 list.map((result, index) => {
+                    // console.log(result)
                     return (<div className={cx('suggest-item')} key={index}>
                         <FontAwesomeIcon icon={faArrowTrendUp} className={cx('icon-up')} />
                         <h4 className={cx('item-title')}>{result.title}</h4>

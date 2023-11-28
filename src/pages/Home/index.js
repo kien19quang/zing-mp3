@@ -1,5 +1,13 @@
+import { useEffect, useState } from "react";
+import Gallery from "~/components/Gallery";
+
 function Home() {
-    // return <h2>Home page</h2>;
+    const [showGallerry, setShowGallery] = useState(false);
+    useEffect(() => {
+        setShowGallery(true);
+    }, []);
+
+    return <div> {showGallerry && <Gallery />}</div>;
 }
 
 export default Home;

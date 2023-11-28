@@ -2,22 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
+  --white: #fff;
   --black: #0a0d14;
   --link-text-hover: #c273ed;
-  --text-primary: #fff;
+  --white: #fff;
+  --text-item-hover: #fff;
   --primary-bg: #34224f;
   --alpha-bg: hsla(0, 0%, 100%, 0.1);
   --layout-bg: #170f23;
   --padding-section: 59px;
   --text-placeholder: #dadada;
+  --navigation-text: #dadada;
+  --text-secondary: hsla(0, 0%, 100%, 0.5);
   --search-text: #eee;
+  --text-secondary: hsla(0, 0%, 100%, 0.5);
   --font-family: 'Inter', sans-serif;
-
-
+  --hover-blur-bg: hsla(0, 0%, 100%, 0.05);
+  --border-primary: hsla(0, 0%, 100%, 0.1);
+  --purple-primary: #9b4de0;
+  --scroll-thumb-bg: hsla(0, 0%, 100%, 0.3);
   --sidebar-bg: hsla(0, 0%, 100%, 0.05);
   --sidebar-width: 240px;
+  --sidebar-popup-bg: #2a213a;
+  --loading-bg: hsla(0, 0%, 100%, 0.1);
+  --border-primary: hsla(0, 0%, 100%, 0.1);
 
   --header-height: 40px;
+  --header-width: 1126px;
+  --content-width: 1126px;
   --search-width: 440px;
 }
 
@@ -38,10 +50,9 @@ body {
   line-height: 1.5;
   font-weight: 400;
   text-rendering: optimizeSpeed;
-  color: var(--text-primary);
+  color: var(--white);
   background-color: var(--layout-bg);
   font-weight: 400;
-  overflow-y: overlay;
 }
 
 button,
@@ -59,3 +70,11 @@ a {
   color: var(--text-color);
   text-decoration: none;
 }
+
+li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+

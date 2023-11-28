@@ -1,7 +1,121 @@
 .wrapper{
-    background-color: var(--sidebar-bg);
+    --padding-item: 12px 21px;
+    background-color: var(--sidebar-popup-bg);
     width: var(--sidebar-width);
     height: 100vh;
-    padding-top: 70px;
-    padding-bottom: 54px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
 }
+
+.is-closed{
+    --padding-item: 12px 21px;
+    --sidebar-width: 70px; 
+    width: var(--sidebar-width);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar{
+    width: 100%;
+}
+
+.navbar-main{
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.navbar-my-music{
+    padding-top: 16px;
+    margin-bottom: 16px;
+    position: absolute;
+}
+
+.navbar-brand{
+    height: 70px;
+    top: 0;
+    padding: 0 25px 0 28px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo{
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    background: var(--img-logo-mp3) 50%/contain no-repeat;
+}
+
+.sidebar-divide {
+    position: relative;
+    height: 1px;
+}
+
+.sidebar-divide::after{
+    content: "";
+    border-top: 1px solid var(--border-primary);
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    top: 0;   
+}
+
+.add-playlist-sidebar{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: var(--sidebar-width);
+    left: 0;
+    height: 55px;
+    padding: 0 28px;
+    color: var(--navigation-text);
+    background-color: var(--sidebar-popup-bg);
+    border-top: 1px solid var(--border-primary);
+    font-weight: 500;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.icon-plus{
+    margin-right: 12px;
+}
+
+.icon-expanded{
+    width: 40px;
+    height: 40px;
+    color: var(--alpha-bg);
+    position: absolute;
+    right: 15px;
+    bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-wrapper{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar-scrollbar{
+    position: relative;
+    inset: 0px;
+    overflow-y: overlay;
+    height: 280px;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 4px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-bg);
+    border-radius: 5px;
+    margin-right: 2px;
+}
+

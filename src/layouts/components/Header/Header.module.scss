@@ -1,26 +1,18 @@
 .wrapper{
-    height: 70px;
     min-width: 660px;
-    max-width: 1126px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left: 240px;
-    top: 0;
-    right: 0;
-    padding: 0 var(--padding-section);
-    z-index: 99;
+    width: var(--header-width);
     transition: right .4s;
 }
 
 .inner{
-    width: 100%;
+    width: var(--header-width);
     height: var(--header-height);
     position: relative;
     display: flex;
     flex-grow: 1;
     align-items: center;
     justify-content: space-between;
+    padding: 0 var(--padding-section);
 }
 
 
@@ -58,17 +50,28 @@
     margin-right: 12px;
     background-color: var(--alpha-bg);
     border-radius: 999px;
+    &:hover {
+            filter: brightness(0.9);
+    }
 }
 .download-btn{
     display: flex;
     padding: 10px 24px;
     align-items: center;
     font-weight: 600;
+    line-height: initial;
 }
 .icon-download{
     margin-right: 4px;
 }
-.setting-item{
+
+.user-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+}
+
+.setting-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,10 +79,5 @@
     width: 40px;
     height: 40px;
     background-color: var(--alpha-bg);
-    border-radius: 999px;
-}
-.user-avatar{
-    width: 40px;
-    height: 40px;
     border-radius: 999px;
 }
