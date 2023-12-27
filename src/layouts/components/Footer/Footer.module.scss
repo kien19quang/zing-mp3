@@ -1,0 +1,38 @@
+.wrapper {
+    margin-top: 48px;
+    padding: 0 40px;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 24px;
+    font-size: 12px;
+    letter-spacing: 1.71px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 24px;
+
+    .item {
+        background-color: #f7f7f7;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+.img {
+    max-width: 90%;
+    max-height: 80%;
+    width: auto;
+}

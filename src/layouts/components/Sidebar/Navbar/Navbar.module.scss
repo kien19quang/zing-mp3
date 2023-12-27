@@ -1,0 +1,42 @@
+.navbar-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-item {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    padding: var(--padding-item);
+    color: var(--navigation-text);
+    border-left: 3px solid transparent;
+
+    &.active{
+        background-color: var(--alpha-bg);
+        color: var(--text-item-hover);
+        border-color: var(--purple-primary);
+    }
+
+    &:hover{
+        color: var(--text-item-hover);
+        .icon-play {
+                display: flex;
+                font-size: 20px;
+            }
+    }
+}
+
+.no-expanded {
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon{
+    margin-right: 12px;
+    display: flex;
+}
+
+.icon-play {
+    display: none;
+}
