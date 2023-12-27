@@ -12,7 +12,6 @@
     flex: 1;
     min-width: var(--content-width);
     width: var(--content-width);
-    overflow: hidden scroll;
     padding: 0 var(--padding-section);
     position: relative;
 }
@@ -33,9 +32,12 @@
 
 .control-music {
     border-top: 1px solid var(--border-player);
+    background-color: var(--player-bg);
     position: fixed;
     bottom: 0;
-    background-color: var(--primary);
     width: 100%;
-    height: 90px;
+    height: var(--height-control);
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
 }

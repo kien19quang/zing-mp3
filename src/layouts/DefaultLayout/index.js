@@ -3,11 +3,13 @@ import styles from "./DefaultLayout.module.scss"
 import Header from "~/layouts/components/Header";
 import Sidebar from "~/layouts/components/Sidebar";
 import Footer from "../components/Footer";
-import Content from "../components/Content/Content";
+import Controls from "~/components/Controls";
+import { useRef } from "react";
 
 const cx = classNames.bind(styles)
 
 function DefaultLayout({ children }) {
+    const audioRef = useRef();
     return (
         <div className={cx('wrapper')}>
             <div className={cx('sidebar')} >
@@ -20,15 +22,14 @@ function DefaultLayout({ children }) {
                 <div className={cx('content')}
                     style={{ marginTop: 70 }}>
                     {children}
-                    <Content />
                 </div>
                 <div className={cx('footer')}>
                     <Footer />
                 </div>
             </div>
-            {/* <div className={cx('control-music')}>
-                <Controls />
-            </div> */}
+            <div className={cx('control-music')}>
+                <Controls audioRef={audioRef} />
+            </div>
         </div>
     );
 }

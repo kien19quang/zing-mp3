@@ -6,9 +6,10 @@ import { images } from "~/assets/images";
 import Arrow from "./Arrow";
 import { Link } from "react-router-dom";
 import Img from "../Img";
+import Media from "../Media/Media";
 
 const cx = classNames.bind(styles)
-function Gallery() {
+function Gallery({ channelItem = false, timeNextCard = 5000, spacing = 25, rankInfo = false }) {
     const img = [
         images.card1,
         images.card2,
@@ -28,13 +29,16 @@ function Gallery() {
             </div>
         );
     });
+
+    const renderChannel = <Media channelSection rankInfo />
+
     const [sliderRef, instanceRef] = useKeenSlider(
         {
             loop: true,
             mode: 'free',
             slides: {
                 perView: 3,
-                spacing: 15,
+                spacing: spacing,
             },
         },
         [
@@ -49,7 +53,7 @@ function Gallery() {
                     if (mouseOver) return;
                     timeout = setTimeout(() => {
                         slider.next();
-                    }, 2000);
+                    }, timeNextCard);
                 }
                 slider.on('created', () => {
                     slider.container.addEventListener('mouseover', () => {
@@ -72,7 +76,7 @@ function Gallery() {
         ],
     );
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', channelItem ? 'pad0' : '')}>
 
             <div className={cx('gallery-prev')}>
                 <Arrow
@@ -84,7 +88,7 @@ function Gallery() {
             </div>
 
             <div ref={sliderRef} className={cx('keen-slider')}>
-                {renderBanner}
+                {channelItem ? renderChannel : renderBanner}
             </div>
 
             <div className={cx('gallery-next')}>

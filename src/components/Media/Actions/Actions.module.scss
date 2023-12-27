@@ -1,0 +1,44 @@
+.actions-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.actions,
+.radioAction {
+    position: absolute;
+    bottom: auto;
+    right: auto;
+    display: flex;  
+}
+
+.actions{
+    z-index: 1000;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    top: 35%;
+}
+
+.action-large {
+    font-size: 5rem;
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0 !important;
+    user-select: none;
+}
+
+.radioAction{
+    top: 25%;
+    left: -10%;
+    font-size: 5rem;
+}

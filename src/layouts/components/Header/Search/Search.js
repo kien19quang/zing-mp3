@@ -26,7 +26,6 @@ function Search() {
         const fetchApi = async () => {
             const result = await ZingMp3.getTop100(debounced)
             setSearchResult(result)
-            console.log(result)
         }
 
         fetchApi()

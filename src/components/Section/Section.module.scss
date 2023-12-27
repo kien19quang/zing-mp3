@@ -7,8 +7,12 @@
     padding: 0 !important; 
 }
 
-.channelSection{
+.section{
     margin-top: 48px;
+}
+
+.shortSection {
+    margin-top: 28px;
 }
 
 .discovery-btn{
@@ -45,4 +49,10 @@
     flex-wrap: wrap;
     margin-left: -4px;
     margin-right: -4px;
+}
+
+.radioSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

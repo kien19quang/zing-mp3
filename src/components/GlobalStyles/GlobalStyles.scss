@@ -7,6 +7,7 @@
   --link-text-hover: #c273ed;
   --white: #fff;
   --text-item-hover: #fff;
+  --text-primary: #fff;
   --primary-bg: #34224f;
   --alpha-bg: hsla(0, 0%, 100%, 0.1);
   --layout-bg: #170f23;
@@ -18,6 +19,7 @@
   --text-secondary: hsla(0, 0%, 100%, 0.5);
   --font-family: 'Inter', sans-serif;
   --hover-blur-bg: hsla(0, 0%, 100%, 0.05);
+  --box-item-bg: hsla(0, 0%, 100%, 0.1);
   --border-primary: hsla(0, 0%, 100%, 0.1);
   --purple-primary: #9b4de0;
   --scroll-thumb-bg: hsla(0, 0%, 100%, 0.3);
@@ -25,12 +27,16 @@
   --sidebar-width: 240px;
   --sidebar-popup-bg: #2a213a;
   --loading-bg: hsla(0, 0%, 100%, 0.1);
+  --player-bg: #130c1c;
   --border-primary: hsla(0, 0%, 100%, 0.1);
+  --dark-alpha-50: rgba(0, 0, 0, 0.5);
+  --border-player: hsla(0, 0%, 100%, 0.1);
 
   --header-height: 40px;
   --header-width: 1126px;
   --content-width: 1126px;
   --search-width: 440px;
+  --height-control: 90px;
 }
 
 

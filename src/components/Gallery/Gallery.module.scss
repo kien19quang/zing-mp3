@@ -1,5 +1,4 @@
 .wrapper {
-    width: var(--content-wifht); 
     padding-top: 32px;
     position: relative;
 
@@ -44,6 +43,7 @@
     align-items: center;
     width: 40px;
     height: 40px;
+    font-size: 3rem;
     border-radius: 50%;
     background-color: hsla(0, 0%, 100%, .15);
     box-shadow: 0 2px 4px 0 rgba(226, 102, 102, .15);
@@ -57,4 +57,15 @@
 
 .arrow-right {
     transform: translateY(-105px) translateX(925px);
+}
+
+.pad0{
+    padding-top: 0;
+    .arrow-left {
+    transform: translateY(55px) translateX(-20px);
+    }
+
+    .arrow-right {
+        transform: translateY(-95px) translateX(990px);
+    }
 }

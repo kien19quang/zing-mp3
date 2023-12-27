@@ -1,21 +1,30 @@
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faWindowRestore } from "@fortawesome/free-regular-svg-icons";
 import {
     faArrowRightFromBracket,
+    faBackwardStep,
     faBan,
     faBrush,
+    faChevronLeft,
     faChevronRight,
     faCircleInfo,
     faCirclePlay,
     faEllipsis,
     faFileLines,
     faFlag,
+    faForwardStep,
     faGear,
+    faListUl,
+    faPause,
     faPhone,
     faPlay,
     faRectangleAd,
+    faRepeat,
     faShield,
+    faShuffle,
     faUpRightFromSquare,
-    faUpload
+    faUpload,
+    faVolumeHigh,
+    faWandMagicSparkles
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -76,6 +85,11 @@ export const setting = () => {
 export const GoRight = () => {
     return <FontAwesomeIcon icon={faChevronRight} />;
 };
+
+export const GoLeft = () => {
+    return <FontAwesomeIcon icon={faChevronLeft} />;
+};
+
 export const GoLink = () => {
     return <FontAwesomeIcon icon={faUpRightFromSquare} />;
 };
@@ -87,6 +101,82 @@ export const Heart = () => {
 export const More = () => {
     return <FontAwesomeIcon icon={faEllipsis} />;
 };
+
+export const Random = () => {
+    return <FontAwesomeIcon icon={faShuffle} />;
+};
+
+export const Prev = () => {
+    return <FontAwesomeIcon icon={faBackwardStep} />;
+};
+
+export const Pause = () => {
+    return <FontAwesomeIcon icon={faPause} />;
+};
+
+export const Next = () => {
+    return <FontAwesomeIcon icon={faForwardStep} />;
+};
+
+export const Repeat = () => {
+    return <FontAwesomeIcon icon={faRepeat} />;
+};
+
+export const MV = ({ width = '2.4rem', height = '2.4rem', className }) => {
+    // < !--iCon by oNlineWebFonts.Com-- >
+    return <img
+        className={className}
+        width={width}
+        height={height}
+        alt=""
+        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gU3ZnIFZlY3RvciBJY29ucyA6IGh0dHA6Ly93d3cub25saW5ld2ViZm9udHMuY29tL2ljb24gLS0+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjU2IDI1NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8bWV0YWRhdGE+IFN2ZyBWZWN0b3IgSWNvbnMgOiBodHRwOi8vd3d3Lm9ubGluZXdlYmZvbnRzLmNvbS9pY29uIDwvbWV0YWRhdGE+DQo8Zz48Zz48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMTMwLDkxLjRjLTAuMiwwLTAuNSwwLTAuNywwLjFjMCwwLDAsMC0wLjEsMGMtMC4yLDAtMC41LDAtMC43LDAuMWMtMS44LDAuMy0zLjQsMS4zLTQuNCwzbC0yNi44LDUwLjhMNzAuNyw5NC40Yy0xLjQtMi40LTQuMy0zLjUtNy0yLjljMCwwLTAuMSwwLTAuMSwwYy0wLjMsMC4xLTAuNSwwLjEtMC43LDAuMmMtMC4yLDAuMS0wLjUsMC4yLTAuNywwLjNjMCwwLTAuMSwwLTAuMSwwLjFjMCwwLDAsMCwwLDBjLTAuNywwLjQtMS4zLDAuOS0xLjksMS42YzAsMCwwLDAsMCwwYy0wLjUsMC42LTAuOCwxLjMtMSwyLjFjMCwwLDAsMC4xLDAsMC4xYy0wLjEsMC41LTAuMiwxLTAuMiwxLjV2NjFjMCwzLjQsMi43LDYuMSw2LjEsNi4xYzMuNCwwLDYuMS0yLjcsNi4xLTYuMXYtMzYuM2wyMC43LDM5LjNjMS41LDIuNiw0LjYsMy43LDcuNCwyLjhjMS43LTAuNCwzLjItMS40LDQuMS0yLjlsMjAuNy0zOS4ydjM2LjNjMCwzLjQsMi43LDYuMSw2LjEsNi4xYzMuNCwwLDYuMS0yLjcsNi4xLTYuMVY5Ny41QzEzNi4xLDk0LjEsMTMzLjQsOTEuNCwxMzAsOTEuNHoiLz48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMTk3LjcsOTEuOWMtMy0xLjQtNi42LDAtNy45LDMuMWwtMTksNDdsLTE5LTQ3Yy0xLjMtMy4xLTQuOS00LjUtNy45LTMuMWMtMywxLjQtNC40LDUuMS0zLDguMmwyNC4xLDU5LjZjMC40LDEuOSwxLjUsMy41LDMuMyw0LjRjMC44LDAuNCwxLjcsMC41LDIuNiwwLjVjMC45LDAsMS43LTAuMSwyLjYtMC41YzEuOC0wLjgsMi45LTIuNSwzLjMtNC40bDI0LjEtNTkuNkMyMDIuMSw5NywyMDAuNyw5My4zLDE5Ny43LDkxLjl6Ii8+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE5Ny4xLDIyLjJINTguOEMzMS45LDIyLjIsMTAsNDQuMSwxMCw3MXYxMTMuOWMwLDI3LDIxLjksNDguOCw0OC44LDQ4LjhoMTM4LjNjMjcsMCw0OC44LTIxLjksNDguOC00OC44VjcxLjFDMjQ2LDQ0LjEsMjI0LjEsMjIuMiwxOTcuMSwyMi4yeiBNMjMzLjgsMTg1YzAsMjAuMi0xNi40LDM2LjYtMzYuNiwzNi42SDU4LjhjLTIwLjIsMC0zNi42LTE2LjQtMzYuNi0zNi42VjcxLjFjMC0yMC4yLDE2LjQtMzYuNiwzNi42LTM2LjZoMTM4LjNjMjAuMiwwLDM2LjYsMTYuNCwzNi42LDM2LjZMMjMzLjgsMTg1TDIzMy44LDE4NXoiLz48L2c+PC9nPg0KPC9zdmc+"
+    />
+}
+
+export const karaoke = () => {
+    return <FontAwesomeIcon icon={faWandMagicSparkles} />
+}
+
+export const restore = () => {
+    return <FontAwesomeIcon icon={faWindowRestore} />;
+};
+
+
+export const volume = () => {
+    return <FontAwesomeIcon icon={faVolumeHigh} />;
+};
+
+export const list = () => {
+    return <FontAwesomeIcon icon={faListUl} />;
+};
+
+export const Wrapper = ({ width = '2.4rem', height = '2.4rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 100 100"
+    >
+        <circle
+            class="svg-circle-bg"
+            stroke="rgba(255, 255, 255, 0.2)"
+            cx="50" cy="50" r="48.75"
+            stroke-width="2.5"
+        >
+        </circle>
+        <circle
+            class="svg-circle"
+            stroke="#ff4b4a"
+            cx="50" cy="50" r="48.75"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-dasharray="306.3052837250048"
+            stroke-dashoffset="0.9771138523239308"
+        // style="transition: stroke-dashoffset 850ms ease-in-out 0s;"
+        >
+        </circle>
+    </svg>
+);
 
 export const Discovery = ({ width = '2.4rem', height = '2.4rem', className }) => (
     <svg
