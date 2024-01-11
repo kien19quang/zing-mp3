@@ -38,7 +38,6 @@
 .media {
     display: flex;
     &:hover {
-
         Button,
         .more-btn {
             opacity: 1;
@@ -124,7 +123,8 @@ Button {
     flex: 1 1;
 }
 
-.sub-title {
+.sub-title,
+.media-content {
     line-height: 1.33;
     font-weight: 400;
     color: var(--text-secondary);
@@ -183,24 +183,24 @@ Button {
         text-align: left;
         padding: 10px;
         border-radius: 5px;
-
+        
         &:hover {
             background-color: var(--alpha-bg);
         }
     }
-
+    
+    
     figure {
         background-color: var(--loading-bg);
         line-height: 0;
         height: 0;
-        padding-bottom: 100%;
-
+        padding-bottom: 100%;    
     }
-
+    
     .order {
         display: none;
     }
-
+    
     .sub-title{
         font-size: 12px;
         margin-top: 3px;
@@ -208,8 +208,90 @@ Button {
     }
 }
 
+.chart-media{
+    background-color: rgb(39, 189, 156);
+   
+    width: fit-content;
+    max-width: 240px;
+    min-width: 175px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 5px;
+    border-radius: 5px;
+
+    .card-info {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 1.5;
+        overflow: hidden;
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+        flex: 1 1;
+    }
+
+    .image{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+//mediaRank
+
+.mediaRank,
+.mediaBox{
+    .media{
+        border-radius: 4px;
+        &:hover {
+                background-color: var(--alpha-bg);
+        }
+    }
+    .media-left {
+        align-items: center;
+        padding: 10px;
+    }
+    
+    .bor-b-1 {
+        border-bottom: 1px solid var(--border-secondary);
+    }
+    .media-content {
+        width: 500px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .number{
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        margin-left: 5px;
+    }
+
+    .image{
+        width: 40px;
+        height: 40px;
+    }
+
+    .content-item{
+        line-height: 1.33;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-right: 10px;
+    }
+}
+
+.mediaBox{
+    .number {
+        width: 32px;
+    }
+}
+
 //playlistSectionph
-.playlistSection {
+.playlistSection,
+.playlistWithArtist {
     .media {
         padding: 0 10px;
         display: flex;
@@ -227,6 +309,7 @@ Button {
         }
     }
 
+
     figure {
         background-color: var(--loading-bg);
         line-height: 0;
@@ -243,6 +326,7 @@ Button {
 .card-content{
     margin-top: 12px;
 }
+
 
 //channelSection
 .order{
@@ -284,6 +368,11 @@ Button {
     .card{
         padding: 0 12px;
         margin-bottom: 30px;
+    }
+
+    .container-list-song{
+        margin-left: -12px !important;
+        margin-right: -12px !important;
     }
 }
 
@@ -369,7 +458,7 @@ Button {
     opacity: 1;
 }
 
-.percent-item{
+.content-item{
     color: var(--white);
     font-weight: 700;
     font-size: 16px;
@@ -386,6 +475,7 @@ Button {
     display: flex;
     flex-direction: column;
 }
+
 .top-content{
     position: relative;
     &:hover {

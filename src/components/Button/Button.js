@@ -14,6 +14,8 @@ function Button({
     primary = false,
     select = false,
     more = false,
+    big = false,
+    medium = false,
     Icon,
     LeftIcons,
     RightIcons,
@@ -34,7 +36,9 @@ function Button({
         text,
         select,
         more,
-        sizes
+        sizes,
+        big,
+        medium
     });
 
     const Comp = to ? Link : href ? 'a' : 'div';

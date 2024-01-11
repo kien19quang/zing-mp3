@@ -13,7 +13,10 @@ const ListMedia = ({
     newReleaseSection = false,
     weekChartSection = false,
     chartHome = false,
-    radioSection = false
+    radioSection = false,
+    mediaRank = false,
+    mediaBox = false,
+    playlistWithArtist = false
 }) => {
     let sectionContent;
     let mediaContent;
@@ -28,12 +31,14 @@ const ListMedia = ({
                 </div>
             </div>
         );
-    } else if (playlistSection) {
+    } else if (playlistSection || playlistWithArtist) {
         numRepeats = 5;
         mediaContent = (
             <div key="playlist" className={cx('column', 'col', 'c-2_4')}>
                 <div className={cx('list')}>
-                    <Media playlistSection />
+                    {playlistWithArtist ? <Media playlistWithArtist />
+                        : <Media playlistSection />
+                    }
                 </div>
             </div>
         );
@@ -64,7 +69,26 @@ const ListMedia = ({
                 </div>
             </div>
         );
+    } else if (mediaRank) {
+        numRepeats = 10;
+        mediaContent = (
+            <div key="mediaRank" className={cx('column', 'col', 'c-12')}>
+                <div className={cx('list')}>
+                    <Media mediaRank />
+                </div>
+            </div>
+        );
+    } else if (mediaBox) {
+        numRepeats = 5;
+        mediaContent = (
+            <div key="mediaBox" className={cx('column', 'col', 'c-12')}>
+                <div className={cx('list')}>
+                    <Media mediaBox />
+                </div>
+            </div>
+        );
     }
+
 
     const repeatedContent = [];
     for (let i = 0; i < numRepeats; i++) {
@@ -93,7 +117,7 @@ const ListMedia = ({
                         />
                     </div>
                 </div>
-                <Chart />
+                <Chart width={554} height={300} />
             </div>
         </div>
             : <Fragment>

@@ -23,7 +23,8 @@ function Section({
     channelSection = false,
     chartHomeSection = false,
     weekChartSection = false,
-    radioSection = false
+    radioSection = false,
+    playlistWithArtist = false,
 }) {
     const classNames = cx('wrapper', {
         [className]: className,
@@ -36,6 +37,7 @@ function Section({
         channelSection,
         chartHomeSection,
         weekChartSection,
+        playlistWithArtist
     })
 
     const renderBtn = selectButton.map((item, index) => {
@@ -92,6 +94,11 @@ function Section({
                 }
                 {
                     radioSection && <ListMedia radioSection />
+                }
+                {
+                    <div className={cx('container-list-song', 'row')}>
+                        {playlistWithArtist && <ListMedia playlistWithArtist />}
+                    </div>
                 }
             </div>
 

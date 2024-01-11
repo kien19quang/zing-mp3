@@ -4,11 +4,11 @@ import Button from "../Button";
 import { Heart, More } from "../Icons";
 
 const cx = classNames.bind(styles)
-function MediaRight({ fullAction = false, percent }) {
+function MediaRight({ fullAction = false, content }) {
     return (
-        percent ? <div className={cx('media-right')}>
-            <span className={cx('percent-item')}>
-                {percent}
+        content ? <div className={cx('media-right')}>
+            <span className={cx('content-item')}>
+                {content}
             </span>
         </div>
             : <div className={cx('media-right')}>

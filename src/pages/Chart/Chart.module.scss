@@ -1,0 +1,115 @@
+.container{
+    padding-top: 40px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section-body,
+.section-header{
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.title-header{
+    background: radial-gradient(50% 124.93% at 95.86% -10%, #3efad9 0, hsla(0, 0%, 100%, 0) 100%), linear-gradient(91.56deg, #ff9357 1.54%, #9100ff 98.71%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.play{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    margin-left: 12px;
+}
+
+.chart-container{
+    position: relative;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.wrapper{
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    padding-top: 40px;
+}
+
+.bg-blur,
+.bg-alpha{
+    margin: 0 calc(var(--week-chart-section)*-1);
+}
+
+.bg-blur{
+    background: url('./week-chart-bg.jpg') top/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    filter: grayscale(1);
+}
+
+.bg-alpha {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--chart-bg-img-alpha);
+}
+
+.title{
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: normal;
+    color: var(--text-item-hover);
+}
+
+.week-chart-box{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0 -15px;
+}
+
+.column{
+    width: 33.33333%;
+    padding: 0 14px;
+}
+
+.box{
+    border-radius: 16px;
+    padding: 20px 10px;
+    background-color: var(--chart-box-bg-alpha);
+    color: var(--text-item-hover);
+}
+
+.box-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0 10px 40px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;      
+}

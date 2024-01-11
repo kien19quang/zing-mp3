@@ -3,6 +3,9 @@ import styles from './Media.module.scss'
 import React from "react";
 import TruncatedText from "../TruncatedText";
 import Actions from "./Actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
+
 
 const cx = classNames.bind(styles)
 function MediaLeft({
@@ -13,8 +16,11 @@ function MediaLeft({
     rankInfo = false,
     contentCenter = false,
     songPrefix = false,
+    chartMedia = false,
+    mediaRank = false,
+    mediaBox = false
 }) {
-    if (controlsSection) {
+    if (controlsSection || mediaRank) {
         newReleaseSection = true
     }
     const media = {
@@ -29,13 +35,17 @@ function MediaLeft({
             href: 'https://zingmp3.vn/nghe-si/Justin-Timberlake',
         }
         ],
+        album: "3D (Justin Timberlake Remix)",
         rank: "#1",
         songPrefix: "1"
     }
     var lengthMax = 1000;
-    if (!songPrefix) {
+    if (chartMedia || mediaBox) {
+        lengthMax = 5
+    } else if (!songPrefix) {
         lengthMax = undefined;
     }
+    var lengthTitle = lengthMax + 5
 
     const renderSinger = media.singers.map((singer, index) => (
         <React.Fragment key={index}>
@@ -48,8 +58,9 @@ function MediaLeft({
 
     return (
         <div className={cx('media-left')}>
-            {songPrefix && <div className={cx('song-prefix')}>
+            {(songPrefix || mediaRank) && <div className={cx('song-prefix')}>
                 <span className={cx('number', ' is-top-1')}>{media.songPrefix}</span>
+                {(mediaRank || mediaBox) && <FontAwesomeIcon icon={faMinus} className={cx('minus')} fade size="l" />}
             </div>
             }
             <div className={cx('song-thumb')}>
@@ -62,7 +73,7 @@ function MediaLeft({
                 <div>
                     <div className={cx('title-wrapper')}>
                         <span className={cx('title')}>
-                            <TruncatedText text={media.title} maxLength={lengthMax ? lengthMax : 15} />
+                            <TruncatedText text={media.title} maxLength={lengthTitle ? lengthTitle : 15} />
                         </span>
                     </div>
                     <h3 className={cx('sub-title', 'truncate')}>
@@ -74,6 +85,12 @@ function MediaLeft({
                     <span className={cx('time-release')}>{media.time}</span>
                 </div>
             </div>
+            {mediaRank && <div className={cx('media-content')} >
+                <span className={cx('album-info')} >
+                    {media.album}
+                </span>
+            </div>
+            }
         </div>
     )
 }

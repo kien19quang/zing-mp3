@@ -158,20 +158,20 @@ export const Wrapper = ({ width = '2.4rem', height = '2.4rem', className }) => (
         viewBox="0 0 100 100"
     >
         <circle
-            class="svg-circle-bg"
+            className="svg-circle-bg"
             stroke="rgba(255, 255, 255, 0.2)"
             cx="50" cy="50" r="48.75"
-            stroke-width="2.5"
+            strokeWidth="2.5"
         >
         </circle>
         <circle
-            class="svg-circle"
+            className="svg-circle"
             stroke="#ff4b4a"
             cx="50" cy="50" r="48.75"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-dasharray="306.3052837250048"
-            stroke-dashoffset="0.9771138523239308"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeDasharray="306.3052837250048"
+            strokeDashoffset="0.9771138523239308"
         // style="transition: stroke-dashoffset 850ms ease-in-out 0s;"
         >
         </circle>

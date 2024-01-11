@@ -9,7 +9,8 @@ export const images = {
     card3: require('~/assets/images/card-3.jpg'),
     card4: require('~/assets/images/card-4.jpg'),
     radioCover: require('./radio-img.jpg'),
-    radioHost: require('./radio-host.jpg')
+    radioHost: require('./radio-host.jpg'),
+    chartBg: require('./week-chart-bg.jpg')
 }
 
 export const logoBrand = [

@@ -16,7 +16,11 @@ function Media({
     channelSection = false,
     weekChartSection = false,
     chartHome = false,
-    radioSection = false
+    radioSection = false,
+    chartMedia = false,
+    mediaRank = false,
+    mediaBox = false,
+    playlistWithArtist = false
 }) {
     const classNames = cx({
         playlistSection,
@@ -24,7 +28,11 @@ function Media({
         channelSection,
         weekChartSection,
         chartHome,
-        radioSection
+        radioSection,
+        chartMedia,
+        mediaRank,
+        mediaBox,
+        playlistWithArtist
     })
 
 
@@ -33,7 +41,8 @@ function Media({
         href: "https://zingmp3.vn/album/Dinh-Cao-Remix-Viet-Hoang-Thuy-Linh-Masew-Van-Mai-Huong-Tang-Duy-Tan/ZWZA8DZ9.html",
         imgHref: "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/4/d/8/d/4d8d4608e336c270994d31c59ee68179.jpg",
         describe: "Khi bạn cần giai điệu để xoa dịu những...",
-        percent: "33%"
+        percent: "33%",
+        duration: "03:55"
 
     }
 
@@ -60,25 +69,60 @@ function Media({
     let songPrefix = false
     const contentRelease = (songPrefix) => {
         let percent = mediaPlaylist.percent
-        if (!chartHome) {
+        if (!(chartHome || chartMedia)) {
             percent = undefined;
         }
         return (
-            <div className={cx('media')}>
-                <MediaLeft newReleaseSection songPrefix={songPrefix} />
+            <div className={cx(chartMedia ? 'chart-media' : 'media')}>
+                <MediaLeft chartMedia={chartMedia} newReleaseSection songPrefix={songPrefix} />
                 <MediaRight percent={percent} />
             </div>
         )
     }
 
-    const contentPlaylist = () => {
+    //component mediaLeft
+    const media = {
+        title: "3D (Justin Timberlake Remix)",
+        src: "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/d/4/a/5/d4a548a46b2c47c6a27583147546b185.jpg",
+        time: '3 ngày trước',
+        singers: [{
+            name: "Jung Kook",
+            href: 'https://zingmp3.vn/nghe-si/Jung-Kook',
+        }, {
+            name: "Justin Timberlake",
+            href: 'https://zingmp3.vn/nghe-si/Justin-Timberlake',
+        }
+        ],
+        album: "3D (Justin Timberlake Remix)",
+        rank: "#1",
+        songPrefix: "1"
+    }
+    const renderSinger = media.singers.map((singer, index) => (
+        <React.Fragment key={index}>
+            <a className={cx('singers')} href={singer.href}>
+                <TruncatedText text={singer.name} maxLength={100} />
+            </a>
+            {index < media.singers.length - 1 && <span>,&nbsp;</span>}
+        </React.Fragment>
+    ));
+    //
+    const contentPlaylist = (playlistWithArtist) => {
         return (
             <div className={cx('media')}>
                 {card(true)}
                 <div className={cx('card-content')}>
-                    <h3 className={cx('sub-title')}>
-                        <TruncatedText text={mediaPlaylist.describe} maxLength={100} />
-                    </h3>
+                    {playlistWithArtist ?
+                        <div>
+                            <h3 classNames={cx('sub-title')}>{media.title}</h3>
+                            <h3>
+                                {renderSinger}
+                            </h3>
+
+                        </div>
+                        : <h3 className={cx('sub-title')}>
+                            <TruncatedText text={mediaPlaylist.describe} maxLength={100} />
+                        </h3>
+                    }
                 </div>
             </div>
         )
@@ -142,15 +186,28 @@ function Media({
         )
     }
 
+    const contentMediaRank = ({ mediaBox, mediaRank }) => {
+        return (
+            <div className={cx('media', mediaRank ? 'bor-b-1' : '')}>
+                <MediaLeft mediaRank={mediaRank} songPrefix mediaBox={mediaBox} />
+                <MediaRight content={mediaPlaylist.duration} />
+                {console.log(mediaBox)}
+            </div>
+        )
+    }
+
     return (
         channelSection ? contentChannel()
             : (
                 <div className={cx('list-item', classNames)}>
-                    {newReleaseSection && contentRelease()}
+                    {(newReleaseSection || chartMedia) && contentRelease()}
                     {chartHome && contentRelease({ songPrefix })}
                     {playlistSection && contentPlaylist()}
+                    {playlistWithArtist && contentPlaylist({ playlistWithArtist })}
                     {weekChartSection && contentWeekChart()}
                     {radioSection && contentRadio()}
+                    {mediaRank && contentMediaRank({ mediaRank })}
+                    {mediaBox && contentMediaRank({ mediaBox })}
                 </div>
             )
     );

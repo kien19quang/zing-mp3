@@ -56,3 +56,10 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.weekChartSection{
+    .container-list-song {
+            margin-left: -12px !important;
+            margin-right: -12px !important;
+    }
+}

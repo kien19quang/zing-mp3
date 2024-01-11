@@ -5,7 +5,7 @@ const config = {
     library: '/library',
     profile: '/profile',
     upload: '/upload',
-    bxh: 'bxh',
+    bxh: '/bxh',
     musicGenre: '/the-loai',
     top100: '/top-100',
     historyMusic: '/history-music',
