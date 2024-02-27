@@ -4,7 +4,7 @@ import Button from "../Button";
 import { Heart, More } from "../Icons";
 
 const cx = classNames.bind(styles)
-function MediaRight({ fullAction = false, content }) {
+function MediaRight({ fullAction = false, content = false }) {
     return (
         content ? <div className={cx('media-right')}>
             <span className={cx('content-item')}>

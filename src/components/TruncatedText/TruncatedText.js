@@ -1,4 +1,8 @@
 function TruncatedText({ text, maxLength }) {
+    if (!text || text.length === 0) {
+        return null; // Trả về null nếu text là null hoặc rỗng
+    }
+
     if (text.length <= maxLength) {
         return <span>{text}</span>;
     }
@@ -9,3 +13,4 @@ function TruncatedText({ text, maxLength }) {
 }
 
 export default TruncatedText;
+

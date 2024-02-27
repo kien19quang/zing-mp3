@@ -1,71 +1,93 @@
-import classNames from "classnames/bind";
-import styles from './Media.module.scss'
-import React from "react";
-import TruncatedText from "../TruncatedText";
-import Actions from "./Actions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import classNames from 'classnames/bind';
+import styles from './Media.module.scss';
+import TruncatedText from '../TruncatedText';
+import Actions from './Actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { playSong, setSong, setSongInfo, setTimes } from '../Redux/action';
+import { getSong, getSongInfo } from '~/services/getSongApi';
 
+const cx = classNames.bind(styles);
 
-const cx = classNames.bind(styles)
 function MediaLeft({
     controlsSection,
-    newReleaseSection = false,
+    newRelease = false,
     playCircle = false,
     playLarge = false,
-    rankInfo = false,
+    rankInfo,
     contentCenter = false,
-    songPrefix = false,
+    songPrefix,
     chartMedia = false,
     mediaRank = false,
-    mediaBox = false
+    mediaBox = false,
+    media = {},
 }) {
+    const dispatch = useDispatch(); // Sử dụng useDispatch để gửi action đến Redux
+
     if (controlsSection || mediaRank) {
-        newReleaseSection = true
+        newRelease = true;
     }
-    const media = {
-        title: "3D (Justin Timberlake Remix)",
-        src: "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/d/4/a/5/d4a548a46b2c47c6a27583147546b185.jpg",
-        time: '3 ngày trước',
-        singers: [{
-            name: "Jung Kook",
-            href: 'https://zingmp3.vn/nghe-si/Jung-Kook',
-        }, {
-            name: "Justin Timberlake",
-            href: 'https://zingmp3.vn/nghe-si/Justin-Timberlake',
-        }
-        ],
-        album: "3D (Justin Timberlake Remix)",
-        rank: "#1",
-        songPrefix: "1"
-    }
+
     var lengthMax = 1000;
     if (chartMedia || mediaBox) {
-        lengthMax = 5
+        lengthMax = 25;
     } else if (!songPrefix) {
         lengthMax = undefined;
     }
-    var lengthTitle = lengthMax + 5
+    var lengthTitle = lengthMax + 5;
 
-    const renderSinger = media.singers.map((singer, index) => (
-        <React.Fragment key={index}>
-            <a className={cx('singers')} href={singer.href}>
-                <TruncatedText text={singer.name} maxLength={lengthMax ? lengthMax : 10} />
-            </a>
-            {index < media.singers.length - 1 && <span>,&nbsp;</span>}
-        </React.Fragment>
-    ));
+    const renderSinger = (singers) => {
+        let singerNames = '';
+        if (singers && Array.isArray(singers)) {
+            singerNames = singers.map((singer) => singer.name).join(', ');
+        }
+        return <TruncatedText text={singerNames} maxLength={20} />;
+    };
+
+    const formatDate = (timestamp) => {
+        const date = new Date(timestamp * 1000);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    };
+
+    const handleClick = async () => {
+        try {
+            const id = media.encodeId
+            { console.log(id) }
+            const song = await getSong(id);
+            const songInfo = await getSongInfo(id);
+            if (song && songInfo) {
+                const { currentTime, duration } = songInfo;
+
+                dispatch(setSong(song));
+                dispatch(setSongInfo(songInfo));
+                dispatch(playSong(true))
+                dispatch(setTimes(currentTime || 0, duration));
+
+            } else {
+                console.log("Failed to get song or songInfo from API");
+            }
+
+        } catch (error) {
+            console.error('Error fetching song data:', error)
+        }
+    };
 
     return (
-        <div className={cx('media-left')}>
-            {(songPrefix || mediaRank) && <div className={cx('song-prefix')}>
-                <span className={cx('number', ' is-top-1')}>{media.songPrefix}</span>
-                {(mediaRank || mediaBox) && <FontAwesomeIcon icon={faMinus} className={cx('minus')} fade size="l" />}
-            </div>
-            }
+        <div className={cx(mediaRank || mediaBox ? 'mediaRank' : 'media-left', 'media-left')} onClick={handleClick}>
+            {(songPrefix || mediaRank) && (
+                <div className={cx('song-prefix')}>
+                    <span className={cx('number', ' is-top-1')}>{songPrefix}</span>
+                    {mediaRank || mediaBox ? <FontAwesomeIcon icon={faMinus} className={cx('minus')} fade size="l" /> : null}
+                </div>
+            )}
             <div className={cx('song-thumb')}>
-                <figure className={cx('image', newReleaseSection ? 'is-60X60' : 'is-120X120')}>
-                    <img src={media.src} alt="" />
+                <figure className={cx('image', newRelease ? 'is-60X60' : 'is-120X120')}>
+                    <img src={media.imgHref || media.thumbnail} alt="" />
                 </figure>
                 <Actions playLarge={playLarge} playCircle={playCircle} />
             </div>
@@ -76,23 +98,20 @@ function MediaLeft({
                             <TruncatedText text={media.title} maxLength={lengthTitle ? lengthTitle : 15} />
                         </span>
                     </div>
-                    <h3 className={cx('sub-title', 'truncate')}>
-                        {renderSinger}
-                    </h3>
+                    <h3 className={cx('sub-title', 'truncate')}>{renderSinger(media.singers || media.artists)}</h3>
                 </div>
                 <div className={cx(rankInfo ? 'rank-info' : 'display-none')}>
-                    <span className={cx('order')}>{media.rank}</span>
-                    <span className={cx('time-release')}>{media.time}</span>
+                    <span className={cx('order')}>{media.rank || rankInfo}</span>
+                    <span className={cx('time-release')}>{media.time || formatDate(media.releasedAt)}</span>
                 </div>
             </div>
-            {mediaRank && <div className={cx('media-content')} >
-                <span className={cx('album-info')} >
-                    {media.album}
-                </span>
-            </div>
-            }
+            {mediaRank && (
+                <div className={cx('media-content')}>
+                    <span className={cx('album-info')}>{media.album.title}</span>
+                </div>
+            )}
         </div>
-    )
+    );
 }
 
 export default MediaLeft;

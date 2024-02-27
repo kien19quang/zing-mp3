@@ -243,8 +243,8 @@ class ZingMp3Api {
     // getNewReleaseChart
     getNewReleaseChart() {
         return new Promise((resolve, rejects) => {
-            this.requestZingMp3("/api/v2/page/get/newrelease-chart", {
-                sig: this.hashParamNoId("/api/v2/page/get/newrelease-chart")
+            this.requestZingMp3("/api/v2/page/get/newRelease-chart", {
+                sig: this.hashParamNoId("/api/v2/page/get/newRelease-chart")
             })
                 .then((res) => {
                     resolve(res)

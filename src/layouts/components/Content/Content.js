@@ -3,68 +3,84 @@ import styles from './Content.module.scss';
 import Section from '~/components/Section';
 
 const cx = classNames.bind(styles);
-function Content() {
-    const buttonTrending = [
-        {
-            nameBtn: 'TẤT CẢ',
-            to: '/new-release/song?filter=all'
-        },
-        {
-            nameBtn: 'VIỆT NAM',
-            to: '/new-release/song?filter=vpop'
-        },
-        {
-            nameBtn: 'QUỐC TẾ',
-            to: '/new-release/song?filter=USUK'
-        },
-    ]
+function Content({ items = [] }) {
 
-    const sections = [
-        {
-            title: 'Mới Phát Hành',
-            selectButton: buttonTrending,
-            newReleaseSection: true,
-            section: true, pad0: true
-        },
-        {
-            title: 'Chill',
-            playlistSection: true,
-            section: true, pad0: true
-        },
-        {
-            title: 'Tâm trạng tan chậm',
-            playlistSection: true,
-            section: true, pad0: true
-        },
-        {
-            title: 'BXH Nhạc Mới',
-            rankInfo: true,
-            channelSection: true,
-            section: true, pad0: true
-        },
-        {
-            chartHomeSection: true,
-            section: true, pad0: true
-        },
-        {
-            weekChartSection: true,
-            shortSection: true,
-            pad0: true
-        },
-        {
-            title: 'Radio Nổi Bật',
-            radioSection: true,
-            section: true,
-            pad0: true
-        },
-    ];
+    // const sections = [
+    //     {
+    //         title: 'Mới Phát Hành',
+    //         selectButton: buttonTrending,
+    //         newRelease: true,
+    //         section: true, pad0: true
+    //     },
+    //     {
+    //         title: 'Chill',
+    //         playlist: true,
+    //         section: true, pad0: true
+    //     },
+    //     {
+    //         title: 'Tâm trạng tan chậm',
+    //         playlist: true,
+    //         section: true, pad0: true
+    //     },
+    //     {
+    //         title: 'BXH Nhạc Mới',
+    //         rankInfo: true,
+    //         newReleaseChart: true,
+    //         section: true, pad0: true
+    //     },
+    //     {
+    //         RTChart: true,
+    //         section: true, pad0: true
+    //     },
+    //     {
+    //         weekChart: true,
+    //         shortSection: true,
+    //         pad0: true
+    //     },
+    //     {
+    //         title: 'Radio Nổi Bật',
+    //         livestream: true,
+    //         section: true,
+    //         pad0: true
+    //     },
+    // ];
+
+    const sectionArray = items.map(item => {
+        const sectionTypeMap = {
+            "banner": "section",
+            "new-release": "section",
+            "recentPlaylist": "section",
+            "playlist": "section",
+            "livestream": "section",
+            "weekChart": "shortSection",
+            "newReleaseChart": "section",
+            "RTChart": "section"
+        };
+
+        const newItem = {
+            sectionType: item.sectionType === "new-release" ? "newRelease" : item.sectionType, // Thay đổi tên sectionType nếu là "new-release"
+            section: false,
+            pad0: true,
+            title: item.title,
+            items: item.items
+        };
+
+        const mappedSectionType = sectionTypeMap[item.sectionType];
+        if (mappedSectionType) {
+            newItem[mappedSectionType] = true;
+        }
+
+        return newItem;
+    });
 
     return (
         <div className={cx('wrapper')}>
-            {sections.map((sectionProps, index) => (
-                <Section key={index} {...sectionProps} />
+            {sectionArray.map((sectionProps, index) => (
+                <Section key={index} sections={sectionProps} />
             ))}
+            {/* {console.log(items) */}
         </div>
+
     );
 }
 

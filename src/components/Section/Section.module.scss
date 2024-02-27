@@ -1,13 +1,13 @@
-.newReleaseSection{
+.newRelease {
     position: relative;
     margin-bottom: -10px;
 }
 
-.pad0{
-    padding: 0 !important; 
+.pad0 {
+    padding: 0 !important;
 }
 
-.section{
+.section {
     margin-top: 48px;
 }
 
@@ -15,7 +15,7 @@
     margin-top: 28px;
 }
 
-.discovery-btn{
+.discovery-btn {
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
@@ -47,19 +47,14 @@
 .row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     margin-left: -4px;
     margin-right: -4px;
 }
 
-.radioSection{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.weekChartSection{
+.weekChart {
     .container-list-song {
-            margin-left: -12px !important;
-            margin-right: -12px !important;
+        margin-left: -12px !important;
+        margin-right: -12px !important;
     }
 }

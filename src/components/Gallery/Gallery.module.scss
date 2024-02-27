@@ -1,7 +1,6 @@
 .wrapper {
     padding-top: 32px;
     position: relative;
-
     &:hover {
         .arrow {
             opacity: 1;
@@ -13,6 +12,7 @@
     display: flex;
     overflow: hidden;
     position: relative;
+
 }
 
 .card_banners {

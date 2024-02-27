@@ -44,7 +44,7 @@ function Sidebar() {
                 <NavbarItem className={cx('navbar-item')}
                     isClose={isClose}
                     title='Radio'
-                    to={config.routes.radio}
+                    to={config.routes.livestream}
                     icon={<Radio />}
                     figure={true}
                     playicon={true}

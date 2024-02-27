@@ -8,8 +8,8 @@ export const images = {
     card2: require('~/assets/images/card-2.jpg'),
     card3: require('~/assets/images/card-3.jpg'),
     card4: require('~/assets/images/card-4.jpg'),
-    radioCover: require('./radio-img.jpg'),
-    radioHost: require('./radio-host.jpg'),
+    radioCover: require('./livestream-img.jpg'),
+    radioHost: require('./livestream-host.jpg'),
     chartBg: require('./week-chart-bg.jpg')
 }
 

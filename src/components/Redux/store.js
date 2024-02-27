@@ -1,4 +1,6 @@
 import { legacy_createStore as createStore } from 'redux';
-import { reducers } from './reducer';
-const store = createStore(reducers);
+import musicReducer from './reducer';
+const store = createStore(musicReducer);
 export default store;
+
+

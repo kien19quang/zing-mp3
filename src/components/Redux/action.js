@@ -1,39 +1,62 @@
-export const times = (currentTime, duration) => {
+export const setTimes = (currentTime, duration) => {
+    console.log("Dispatching setTimes action with currentTime:", currentTime, "and duration:", duration);
     return {
-        type: 'times',
-        payload: { currentTime, duration },
+        type: 'SET_TIMES',
+        payload: { currentTime, duration }
     };
 };
 
-export const listSong = (data) => {
+export const setSong = (data) => {
+    console.log("Dispatching setSong action with data:", data);
     return {
-        type: 'listSong',
-        payload: data,
+        type: 'SET_SONG',
+        payload: data
+    };
+};
+
+export const setListSong = (data) => {
+    console.log("Dispatching setListSong action with data:", data);
+    return {
+        type: 'SET_LIST_SONG',
+        payload: data
+    };
+};
+
+export const setSongInfo = (data) => {
+    console.log("Dispatching setSongInfo action with data:", data);
+    return {
+        type: 'SET_SONG_INFO',
+        payload: data
     };
 };
 
 export const playSong = (data) => {
+    console.log("Dispatching playSong action with data:", data);
     return {
-        type: 'play',
-        payload: data,
+        type: 'PLAY_SONG',
+        payload: data
     };
 };
-export const pauseSong = (data) => {
-    return {
-        type: 'pause',
-        payload: data,
-    };
-};
-export const nextSong = (index) => {
-    return {
-        type: 'next',
-        payload: index
-    };
-};
-export const prevSong = (index) => {
-    return {
-        type: 'prev',
-        payload: index
-    };
 
+export const pauseSong = (data) => ({
+    type: 'PAUSE_SONG',
+    payload: data
+});
+
+export const nextSong = (index) => ({
+    type: 'NEXT_SONG',
+    payload: index
+});
+
+export const prevSong = (index) => ({
+    type: 'PREV_SONG',
+    payload: index
+});
+
+export const setVolume = (volume) => {
+    console.log("Dispatching setSongInfo action with data:", volume);
+    return {
+        type: 'SET_VOLUME',
+        payload: volume
+    };
 };

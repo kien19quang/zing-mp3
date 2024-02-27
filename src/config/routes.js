@@ -1,7 +1,7 @@
 const config = {
     home: '/',
     chart: '/zing-chart',
-    radio: '/radio',
+    livestream: '/livestream',
     library: '/library',
     profile: '/profile',
     upload: '/upload',

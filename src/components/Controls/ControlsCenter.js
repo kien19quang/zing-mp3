@@ -5,53 +5,47 @@ import ProgressBar from './ProgressBar';
 import { useEffect, useState } from 'react';
 import Button from '../Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { currentIndex, isPlaying, listSong, times } from '../Redux/selector';
-import { nextSong, pauseSong, playSong } from '../Redux/action';
+import { isPlaying, times } from '../Redux/selector';
+import { pauseSong, playSong, setTimes } from '../Redux/action';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
+
 function ControlsCenter({ audioRef }) {
-    // const isPlaying = true
     const dispatch = useDispatch();
     const isPlay = useSelector(isPlaying);
-    const time = useSelector(times);
-    const songsPlay = useSelector(listSong);
-    let index = useSelector(currentIndex);
+    const { currentTime, duration } = useSelector(times) || {};
 
-    const [timePlay, setTimePlay] = useState();
+    const [timePlay, setTimePlay] = useState(0);
 
     const handleTime = (time) => {
         const minutes = Math.floor(time >= 60 ? time / 60 : 0);
         const timeRemaining = time - minutes * 60;
         const second = Math.floor(timeRemaining < 60 ? timeRemaining : 0);
-
-        return `${minutes < 10 ? '0' + minutes : minutes} : ${second < 10 ? '0' + second : second}`;
+        return `${minutes < 10 ? '0' + minutes : minutes}:${second < 10 ? '0' + second : second}`;
     };
-    const timeRemain = handleTime(times.currentTime);
-    const timeDuration = handleTime(times.duration);
 
     useEffect(() => {
-        //time update
-        setTimePlay(timeRemain);
-    }, [timeRemain]);
+        let intervalId;
 
-    useEffect(() => {
-        //time update
-        setTimePlay(timeRemain);
-
-    }, [timeRemain]);
-
-    useEffect(() => {
-        if (audioRef) {
-            if (isPlay) {
-                audioRef.current.play();
-            } else {
-                // audioRef.current.pause();
-            }
+        if (isPlay) {
+            intervalId = setInterval(() => {
+                setTimePlay(prevTime => {
+                    const newTime = prevTime + 1;
+                    return newTime > duration ? 0 : newTime;
+                });
+            }, 1000);
+        } else {
+            clearInterval(intervalId);
         }
-    }, [isPlay]);
 
+        return () => clearInterval(intervalId);
+    }, [isPlay, duration]);
 
-
+    useEffect(() => {
+        if (isPlay) {
+            setTimePlay(currentTime);
+        }
+    }, [isPlay, currentTime]);
 
     const btns = [
         {
@@ -66,9 +60,9 @@ function ControlsCenter({ audioRef }) {
             type: 'prev'
         },
         {
-            Icon: isPlaying ? circlePlay : Pause,
+            Icon: isPlay ? Pause : circlePlay,
             border: true,
-            type: isPlaying ? 'play' : 'pause',
+            type: isPlay ? 'pause' : 'play',
         },
         {
             Icon: Next,
@@ -81,7 +75,7 @@ function ControlsCenter({ audioRef }) {
             titleSub: 'Bật phát lại tất cả',
             type: 'repeat'
         }
-    ]
+    ];
 
     const renderBtn = btns.map((btn, index) => {
         return (
@@ -95,65 +89,32 @@ function ControlsCenter({ audioRef }) {
                 onClick={() => handle(btn.type)}
             />
         );
-    })
+    });
 
     const handle = (type) => {
         switch (type) {
             case 'play':
-                dispatch(playSong(isPlay ? false : true));
+                dispatch(playSong(true))
+                dispatch(setTimes(timePlay, duration))
                 break;
             case 'pause':
-                dispatch(pauseSong(isPlay ? false : true));
-                break;
-            case 'next':
-                console.log('next');
-                if (index < songsPlay.length - 1) {
-                    index++;
-                    dispatch(nextSong(index));
-                    dispatch(playSong(true));
-                    setTimeout(function () {
-                        audioRef.current.play();
-                    }, 0);
-                } else {
-                    index = 0;
-                    dispatch(nextSong(index));
-                    dispatch(playSong(true));
-                    setTimeout(function () {
-                        audioRef.current.play();
-                    }, 0);
-                }
-
-                break;
-            case 'prev':
-                if (index > 0) {
-                    index--;
-                    dispatch(nextSong(index));
-                    dispatch(playSong(true));
-                    setTimeout(function () {
-                        audioRef.current.play();
-                    }, 0);
-                } else {
-                    index = songsPlay.length - 1;
-                    dispatch(nextSong(index));
-                    dispatch(playSong(true));
-                    setTimeout(function () {
-                        audioRef.current.play();
-                    }, 0);
-                }
+                dispatch(pauseSong(true))
+                dispatch(setTimes(timePlay, duration))
                 break;
             default:
-                console.log('default');
+                console.log('default')
         }
     };
+
     return (
         <div className={cx('wrapper-center')}>
             <div className={cx('btn-actions')}>
                 {renderBtn}
             </div>
             <div className={cx('time')}>
-                <span className={cx('time-start')}>0:00</span>
-                <ProgressBar step={1} audioRef={audioRef} />
-                <span className={cx('time-end')}>0:00</span>
+                <span className={cx('time-start')}>{handleTime(timePlay)}</span>
+                <ProgressBar step={1} audioRef={audioRef} max={100} min={0} currentTime={currentTime} />
+                <span className={cx('time-end')}>{handleTime(duration)}</span>
             </div>
         </div>
     );

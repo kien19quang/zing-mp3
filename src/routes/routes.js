@@ -12,7 +12,7 @@ const publicRoutes = [
     { path: config.routes.chart, component: Chart },
     { path: config.routes.bxh, component: BXH },
     { path: config.routes.upload, component: Upload },
-    { path: config.routes.radio, component: Radio },
+    { path: config.routes.livestream, component: Radio },
     { path: config.routes.library, component: Library },
     { path: config.routes.historyMusic, component: HistoryMusic },
     { path: config.routes.favoriteMusic, component: FavotiteMusic },

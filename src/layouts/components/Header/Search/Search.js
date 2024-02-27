@@ -7,7 +7,7 @@ import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import ListSuggest from '~/components/ListSuggest';
 import { useEffect, useRef, useState } from 'react';
 import { useDebounce } from '~/hooks';
-import ZingMp3 from '~/services/zingmp3';
+import { searchSong } from '~/services/getSongApi';
 
 const cx = classNames.bind(styles)
 function Search() {
@@ -24,7 +24,7 @@ function Search() {
             return;
         }
         const fetchApi = async () => {
-            const result = await ZingMp3.getTop100(debounced)
+            const result = await searchSong(debounced)
             setSearchResult(result)
         }
 
@@ -34,20 +34,24 @@ function Search() {
     return (
         <>
             <HeadlessTippy
-                // trigger="click"
+                trigger="click"
                 interactive
-                visible={isClicked}
+                // visible={isClicked}
                 offset={[0, 0]}
                 placement="bottom-start"
+                onClickOutside={() => setIsClicked(false)}
                 render={attrs => (
-                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                        <ListSuggest data={searchResult} />
+                    <div className={cx('search-result')}
+                        tabIndex="-1" {...attrs}
+                    >
+                        <ListSuggest
+                            data={searchResult}
+                            searchValue={searchValue}
+                        />
                     </div>
                 )}
             >
                 <div className={cx('search-container', isClicked && 'is-open')}
-                    onClick={() => setIsClicked(true)}
-                    onBlur={() => setIsClicked(false)}
                 >
                     <FontAwesomeIcon className={cx('search-icon')} icon={faMagnifyingGlass} />
                     <input
@@ -56,6 +60,7 @@ function Search() {
                         placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
                         spellCheck={false}
                         onChange={(e) => setSearchValue(e.target.value.trimStart())}
+                        onFocus={() => setIsClicked(true)}
                     />
                     <FontAwesomeIcon className={cx('close-icon')} icon={faXmark} />
                 </div>

@@ -41,8 +41,8 @@ function Radio() {
         <div className={cx('container')}>
             <a href="/zing-chart"
                 className={cx('title-header')}>Radio</a>
-            <Section radioSection />
-            <div className={cx('radio-schedule')}>
+            <Section livestream />
+            <div className={cx('livestream-schedule')}>
                 <div className={cx('left-col')}>
                     <div className={cx('header')}>
                         Kênh

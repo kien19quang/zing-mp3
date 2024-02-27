@@ -2,27 +2,25 @@ import classNames from "classnames/bind";
 import styles from './Gallery.module.scss'
 // import { useState } from "react";
 import { useKeenSlider } from 'keen-slider/react';
-import { images } from "~/assets/images";
 import Arrow from "./Arrow";
 import { Link } from "react-router-dom";
 import Img from "../Img";
-import Media from "../Media/Media";
+import MediaLeft from "../Media/MediaLeft";
 
 const cx = classNames.bind(styles)
-function Gallery({ channelItem = false, timeNextCard = 5000, spacing = 25, rankInfo = false }) {
-    const img = [
-        images.card1,
-        images.card2,
-        images.card3,
-        images.card4
-    ];
+function Gallery({ channelItem = false, timeNextCard = 5000, spacing = 25, rankInfo = false, items = [] }) {
+    const img = items.map(item => ({
+        src: item.banner || item.thumbnailM,
+        href: item.link
+    }));
+
     const renderBanner = img.map((item, index) => {
         return (
             <div className={cx('card_banners')} key={index}>
                 <div className={`keen-slider__slide number-slide${index + 1}`}>
-                    <Link to="/">
+                    <Link to='/'>
                         <figure className={cx('items')}>
-                            <Img src={item} />
+                            <Img src={item.src} />
                         </figure>
                     </Link>
                 </div>
@@ -30,7 +28,19 @@ function Gallery({ channelItem = false, timeNextCard = 5000, spacing = 25, rankI
         );
     });
 
-    const renderChannel = <Media channelSection rankInfo />
+
+    const renderChannel = () => {
+        return items.map((mediaItem, index) => (
+            <div key={index} className={cx('c-4', 'media', 'bor-b-1')}>
+                <div className={`keen-slider__slide number-slide${index + 1}`}>
+                    <Link to='/'>
+                        <MediaLeft rankInfo={`#${index + 1}`} mediaBox playLarge media={mediaItem} />
+                    </Link>
+                </div>
+            </div>
+        ));
+    };
+
 
     const [sliderRef, instanceRef] = useKeenSlider(
         {
@@ -77,7 +87,6 @@ function Gallery({ channelItem = false, timeNextCard = 5000, spacing = 25, rankI
     );
     return (
         <div className={cx('wrapper', channelItem ? 'pad0' : '')}>
-
             <div className={cx('gallery-prev')}>
                 <Arrow
                     left
@@ -88,7 +97,7 @@ function Gallery({ channelItem = false, timeNextCard = 5000, spacing = 25, rankI
             </div>
 
             <div ref={sliderRef} className={cx('keen-slider')}>
-                {channelItem ? renderChannel : renderBanner}
+                {channelItem ? renderChannel() : renderBanner}
             </div>
 
             <div className={cx('gallery-next')}>

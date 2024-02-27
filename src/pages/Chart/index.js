@@ -3,9 +3,9 @@ import styles from './Chart.module.scss'
 import Button from "~/components/Button";
 import { circlePlay } from "~/components/Icons";
 import ChartTooltip from "~/components/ChartTooltip";
-import Media from "~/components/Media/Media";
-import ListMedia from "~/components/Media/ListMedia";
+// import Media from "~/components/Media/Media";
 import config from "~/config/routes";
+import Media from "~/components/Media/Media";
 
 const cx = classNames.bind(styles)
 function Chart() {
@@ -35,7 +35,6 @@ function Chart() {
                 height={300}
             />
             <Media mediaRank />
-            <ListMedia mediaRank />
             <div className={cx('more')}>
                 <Button
                     more
@@ -54,7 +53,7 @@ function Chart() {
                     <div className={cx('column')}>
                         <div className={cx('box')}>
                             {boxHeader({ href: "/zing-chart/vn", content: "Việt Nam" })}
-                            <ListMedia mediaBox />
+                            <Media mediaBox />
                             <div className={cx('more')}>
                                 <Button
                                     more
@@ -66,7 +65,7 @@ function Chart() {
                     <div className={cx('column')}>
                         <div className={cx('box')}>
                             {boxHeader({ href: "/zing-chart/us-uk", content: "US-UK" })}
-                            <ListMedia mediaBox />
+                            <Media mediaBox />
                             <div className={cx('more')}>
                                 <Button
                                     more
@@ -78,7 +77,7 @@ function Chart() {
                     <div className={cx('column')}>
                         <div className={cx('box')}>
                             {boxHeader({ href: "/zing-chart/K-Pop", content: "K-Pop" })}
-                            <ListMedia mediaBox />
+                            <Media mediaBox />
                             <div className={cx('more')}>
                                 <Button
                                     more
