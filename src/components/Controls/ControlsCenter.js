@@ -9,12 +9,10 @@ import { isPlaying, times } from '../Redux/selector';
 import { pauseSong, playSong, setTimes } from '../Redux/action';
 
 const cx = classNames.bind(styles);
-
 function ControlsCenter({ audioRef }) {
     const dispatch = useDispatch();
     const isPlay = useSelector(isPlaying);
     const { currentTime, duration } = useSelector(times) || {};
-
     const [timePlay, setTimePlay] = useState(0);
 
     const handleTime = (time) => {
