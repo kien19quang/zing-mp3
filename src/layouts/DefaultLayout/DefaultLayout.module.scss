@@ -1,0 +1,43 @@
+.wrapper {
+    display: flex;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    height: calc(100vh - 90px);
+    position: relative;
+}
+
+.container {
+    flex: 1;
+    min-width: var(--content-width);
+    width: var(--content-width);
+    padding: 0 var(--padding-section);
+    position: relative;
+}
+
+
+.header{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    z-index: 99;
+    height: 70px;
+    left: 240px;
+    top: 0;
+    right: 0;
+    background-color: var(--layout-bg);
+    opacity: 0.95;
+}
+
+.control-music {
+    border-top: 1px solid var(--border-player);
+    background-color: var(--player-bg);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: var(--height-control);
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}

@@ -1,0 +1,29 @@
+.container {
+    min-height: calc(100% - 158px);
+    margin-top: 70px;
+
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.section{
+    margin-bottom: 38px;
+    padding: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.play{
+    margin-left: 12px;
+}
+.title {
+    text-transform: capitalize;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: normal;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}

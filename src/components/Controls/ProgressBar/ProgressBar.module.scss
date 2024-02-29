@@ -1,0 +1,40 @@
+.input-volume,
+.input-progress {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    background-color: grey;
+    border-radius: 100px;
+    border: none;
+
+    &:hover{
+        height: 6px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+    }
+    
+}
+
+.input-progress {
+    --progress-width: 0%;
+    background-image: linear-gradient(to right, #fff var(--progress-width), transparent 0);
+}
+
+.input-volume {
+    ----volume-width: 0%;
+    background-image: linear-gradient(to right, #fff var(--volume-width), transparent 0);
+}
+
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 0px;
+    width: 0px;
+    background-color: var(--text-primary);
+    transition: linear 0.1s;
+    border-radius: 50%;
+}
+
+.progress_input:hover::-webkit-slider-thumb {
+    padding: 6px;
+    transition: linear 0.1s;
+}
