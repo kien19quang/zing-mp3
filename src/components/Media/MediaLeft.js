@@ -57,7 +57,6 @@ function MediaLeft({
     const handleClick = async () => {
         try {
             const id = media.encodeId
-            { console.log(id) }
             const song = await getSong(id);
             const songInfo = await getSongInfo(id);
             if (song && songInfo) {
